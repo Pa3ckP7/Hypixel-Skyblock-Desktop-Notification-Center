@@ -28,14 +28,14 @@ namespace SBWikiManager.SubForms
                 switch (entries[i].type)
                 {
                     case "edit":
-                        if (!entries[i].HasMinorFlag) label.Text = $"{entries[i].user} edited {entries[i].title} description {entries[i].comment}";
-                        else label.Text = $"[minor]{entries[i].user} edited {entries[i].title} description {entries[i].comment}";
+                        if (!entries[i].HasMinorFlag) label.Text = $"{entries[i].user} edited {entries[i].title} description {entries[i].commentshort}";
+                        else label.Text = $"[minor]{entries[i].user} edited {entries[i].title} description {entries[i].commentshort}";
                         break;
                     case "log":
-                        label.Text = $"[LOG|{entries[i].logtype}] {entries[i].user} logged action {entries[i].logaction} {entries[i].title} description: {entries[i].comment}";
+                        label.Text = $"[LOG|{entries[i].logtype}] {entries[i].user} logged action {entries[i].logaction} {entries[i].title} description: {entries[i].commentshort}";
                         break;
                     case "new":
-                        label.Text = $"{entries[i].user} created {entries[i].title} description {entries[i].comment}";
+                        label.Text = $"{entries[i].user} created {entries[i].title} description {entries[i].commentshort}";
                         break;
                 } // set text
                 label.TextAlign = ContentAlignment.MiddleLeft;
@@ -55,14 +55,14 @@ namespace SBWikiManager.SubForms
                 switch (entries[i].type)
                 {
                     case "edit":
-                        if (!entries[i].HasMinorFlag) label.Text = $"{entries[i].user} edited {entries[i].title} description {entries[i].comment}";
-                        else label.Text = $"[minor]{entries[i].user} edited {entries[i].title} description {entries[i].comment}";
+                        if (!entries[i].HasMinorFlag) label.Text = $"{entries[i].user} edited {entries[i].title} description {entries[i].commentshort}";
+                        else label.Text = $"[minor]{entries[i].user} edited {entries[i].title} description {entries[i].commentshort}";
                         break;
                     case "log":
-                        label.Text = $"[LOG|{entries[i].logtype}] {entries[i].user} logged action {entries[i].logaction} {entries[i].title} description: {entries[i].comment}";
+                        label.Text = $"[LOG|{entries[i].logtype}] {entries[i].user} logged action {entries[i].logaction} {entries[i].title} description: {entries[i].commentshort}";
                         break;
                     case "new":
-                        label.Text = $"{entries[i].user} created {entries[i].title} description {entries[i].comment}";
+                        label.Text = $"{entries[i].user} created {entries[i].title} description {entries[i].commentshort}";
                         break;
                 } // set text
                 label.TextAlign = ContentAlignment.MiddleLeft;

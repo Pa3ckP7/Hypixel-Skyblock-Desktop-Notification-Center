@@ -11,15 +11,15 @@ namespace SBWikiContent
         public string type { get; set; }
         public string title { get; set; }
         public string user { get; set; }
-        public string rawcomment { get; set; }
-        public string comment
+        public string comment { get; set; }
+        public string commentshort
         {
             get
             {
-                if (rawcomment != null)
+                if (comment != null)
                 {
-                    if (rawcomment.Length > 20) return $"{rawcomment.Substring(0, 20)}...";
-                    else return rawcomment;
+                    if (comment.Length > 20) return $"{comment.Substring(0, 20)}...";
+                    else return comment;
                 }
                 else return "";
             }
