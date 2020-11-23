@@ -49,13 +49,11 @@ namespace SBWikiManager.SubForms
             }
             if (labels.Count > 50) 
             {
-                labels.Reverse();
                 for (int i = 50; i < labels.Count; i++) 
                 {
                     labels[i].Dispose();
                 }
                 labels.RemoveAll(x => labels.IndexOf(x) >= 50);
-                labels.Reverse();
             }
         }
     }

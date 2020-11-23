@@ -40,7 +40,7 @@ namespace SBWikiManager.SubForms
                 } // set text
                 label.TextAlign = ContentAlignment.MiddleLeft;
                 Controls.Add(label);
-                labels.Insert(0, label);
+                labels.Add(label);
             }
             #endregion
         }
@@ -67,7 +67,7 @@ namespace SBWikiManager.SubForms
                 } // set text
                 label.TextAlign = ContentAlignment.MiddleLeft;
                 Controls.Add(label);
-                labels.Insert(0, label);
+                labels.Add(label);
             }
             if (labels.Count > 100)
             {
