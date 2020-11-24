@@ -13,47 +13,47 @@ namespace SBWikiManager.SubForms
 {
     public partial class SBWikiSocialForm : Form
     {
-        List<Label> labels = new List<Label>();
+        List<LinkedButton> buttons = new List<LinkedButton>();
         List<string> entries = new List<string>();
         SocialManager sm = new SocialManager();
         public SBWikiSocialForm()
         {
             InitializeComponent();            
-            entries=sm.GetData();
-            foreach (var entry in entries)
+            entries=sm.GetData();            
+            for (int i = entries.Count - 1; i >= 0; i--) 
             {
-                Label label = new Label();
-                label.Dock = DockStyle.Top;
-                label.Name = "label";
-                label.Text = entry;
-                label.TextAlign = ContentAlignment.MiddleLeft;
-                Controls.Add(label);
-                labels.Insert(0, label);
+                LinkedButton button = new LinkedButton();
+                button.Dock = DockStyle.Top;
+                button.Name = "button";
+                //insert link
+                button.button.Text = entries[i];
+                button.button.TextAlign = ContentAlignment.MiddleLeft;
+                Controls.Add(button);
+                buttons.Insert(0, button);
             }
         }
-
         private void RefreshTimer_Tick(object sender, EventArgs e)
         {
             List<string> newset = sm.GetData();
             List<string> newentries = newset.Except(entries).ToList();
-            foreach (var entry in newentries)
+            for (int i = newentries.Count - 1; i >= 0; i--)
             {
-                Label label = new Label();
-                label.Dock = DockStyle.Top;
-                label.Name = "label";
-                label.Text = entry;
-                label.TextAlign = ContentAlignment.MiddleLeft;
-                Controls.Add(label);
-                entries.Add(entry);
-                labels.Insert(0, label);
+                LinkedButton button = new LinkedButton();
+                button.Dock = DockStyle.Top;
+                button.Name = "label";
+                button.button.Text = newentries[i];
+                button.button.TextAlign = ContentAlignment.MiddleLeft;
+                Controls.Add(button);
+                entries.Insert(0, newentries[i]);
+                buttons.Insert(0, button);
             }
-            if (labels.Count > 100)
+            if (buttons.Count > 100)
             {
-                for (int i = 100; i < labels.Count; i++)
+                for (int i = 100; i < buttons.Count; i++)
                 {
-                    labels[i].Dispose();
+                    buttons[i].Dispose();
                 }
-                labels.RemoveAll(x => labels.IndexOf(x) >= 100);
+                buttons.RemoveAll(x => buttons.IndexOf(x) >= 100);
                 entries.RemoveAll(x => entries.IndexOf(x) >= 100);
             }
         }

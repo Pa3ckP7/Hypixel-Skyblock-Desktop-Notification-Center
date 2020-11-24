@@ -13,7 +13,7 @@ namespace SBWikiManager.SubForms
 {
     public partial class SBWikiForumForm : Form
     {
-        List<Label> labels = new List<Label>();
+        List<LinkedButton> buttons = new List<LinkedButton>();
         ForumManager fm = new ForumManager();
         public SBWikiForumForm()
         {
@@ -22,14 +22,14 @@ namespace SBWikiManager.SubForms
             #region display            
             for (int i = posts.Count - 1; i >= 0; i--) 
             {
-                Label label = new Label();
-                label.Dock = DockStyle.Top;
-                label.Name = "label";
-                if (!posts[i].IsReply) label.Text = $"{posts[i].PosterName} posted {posts[i].PostTitle}: {posts[i].Content}";
-                else label.Text = $"{posts[i].PosterName} replied with {posts[i].Content} on {posts[i].PostTitle}";
-                label.TextAlign = ContentAlignment.MiddleLeft;
-                Controls.Add(label);
-                labels.Insert(0, label);
+                LinkedButton button = new LinkedButton(posts[i].Link);
+                button.Dock = DockStyle.Top;
+                button.Name = "button";
+                if (!posts[i].IsReply) button.button.Text = $"{posts[i].PosterName} posted {posts[i].PostTitle}: {posts[i].Content}";
+                else button.button.Text = $"{posts[i].PosterName} replied with {posts[i].Content} on {posts[i].PostTitle}";
+                button.button.TextAlign = ContentAlignment.MiddleLeft;
+                Controls.Add(button);
+                buttons.Insert(0, button);
             }
             #endregion
         }
@@ -38,22 +38,22 @@ namespace SBWikiManager.SubForms
             List<Post> posts=fm.RefreshData();
             for (int i = posts.Count - 1; i >= 0; i--)
             {
-                Label label = new Label();
-                label.Dock = DockStyle.Top;
-                label.Name = "label";
-                if (!posts[i].IsReply) label.Text = $"{posts[i].PosterName} posted {posts[i].PostTitle}: {posts[i].Content}";
-                else label.Text = $"{posts[i].PosterName} replied with {posts[i].Content} on {posts[i].PostTitle}";
-                label.TextAlign = ContentAlignment.MiddleLeft;
-                Controls.Add(label);
-                labels.Insert(0, label);
+                LinkedButton button = new LinkedButton(posts[i].Link);
+                button.Dock = DockStyle.Top;
+                button.Name = "button";
+                if (!posts[i].IsReply) button.button.Text = $"{posts[i].PosterName} posted {posts[i].PostTitle}: {posts[i].Content}";
+                else button.button.Text = $"{posts[i].PosterName} replied with {posts[i].Content} on {posts[i].PostTitle}";
+                button.button.TextAlign = ContentAlignment.MiddleLeft;
+                Controls.Add(button);
+                buttons.Insert(0, button);
             }
-            if (labels.Count > 50) 
+            if (buttons.Count > 50) 
             {
-                for (int i = 50; i < labels.Count; i++) 
+                for (int i = 50; i < buttons.Count; i++) 
                 {
-                    labels[i].Dispose();
+                    buttons[i].Dispose();
                 }
-                labels.RemoveAll(x => labels.IndexOf(x) >= 50);
+                buttons.RemoveAll(x => buttons.IndexOf(x) >= 50);
             }
         }
     }

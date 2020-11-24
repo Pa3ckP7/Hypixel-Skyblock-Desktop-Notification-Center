@@ -32,5 +32,22 @@ namespace SBWikiContent
         public string logtype { get; set; }
         public string logaction { get; set; }
         public Logparams logparams { get; set; }
+        public string link 
+        {
+            get 
+            {
+                switch (type)
+                {
+                    case "edit":
+                        return $"https://hypixel-skyblock.fandom.com/wiki/{title}?action=history";
+                    case "log":
+                        return "https://hypixel-skyblock.fandom.com/wiki/Special:RecentChanges?hidebots=1&hidepageedits=1&hidenewpages=1";
+                    case "new":
+                        return $"https://hypixel-skyblock.fandom.com/wiki/{title}";
+                    default:
+                        return null;
+                }
+            }
+        }
     }
 }

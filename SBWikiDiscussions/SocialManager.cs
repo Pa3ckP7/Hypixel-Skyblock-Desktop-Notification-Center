@@ -27,7 +27,7 @@ namespace SBWikiSocial
                     entrytext+=textsegment.Groups["text"].Value;
                 }
                 entrytext = Regex.Replace(entrytext, @"\([^)]*\)", "");
-                entrytext = Regex.Replace(entrytext,@"[ ]{2,}","");
+                entrytext = Regex.Replace(entrytext,@"[ ]{2,}"," ");
                 entrylist.Add(entrytext);
             }
             string stop = "debug";
