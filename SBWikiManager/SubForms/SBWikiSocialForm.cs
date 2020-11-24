@@ -1,4 +1,5 @@
-﻿using SBWikiSocial;
+﻿using SBWikiSettings;
+using SBWikiSocial;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,12 +15,16 @@ namespace SBWikiManager.SubForms
     public partial class SBWikiSocialForm : Form
     {
         List<LinkedButton> buttons = new List<LinkedButton>();
-        List<Social> entries = new List<Social>();
+        List<SBWikiSocial.Social> entries = new List<SBWikiSocial.Social>();
         SocialManager sm = new SocialManager();
-        public SBWikiSocialForm()
+        Settings Settings;
+        NotifyIcon Notifications;
+        public SBWikiSocialForm(Settings settings,NotifyIcon notifications)
         {
-            InitializeComponent();            
-            entries=sm.GetData();            
+            InitializeComponent();
+            Notifications = notifications;
+            Settings = settings;
+            entries =sm.GetData();            
             for (int i = entries.Count - 1; i >= 0; i--) 
             {
                 LinkedButton button = new LinkedButton(entries[i].Link);
@@ -33,8 +38,8 @@ namespace SBWikiManager.SubForms
         }
         private void RefreshTimer_Tick(object sender, EventArgs e)
         {
-            List<Social> newset = sm.GetData();
-            List<Social> newentries = newset.Except(entries).ToList();
+            List<SBWikiSocial.Social> newset = sm.GetData();
+            List<SBWikiSocial.Social> newentries = newset.Where(x => !entries.Any(y => x.Text == y.Text)).ToList();
             for (int i = newentries.Count - 1; i >= 0; i--)
             {
                 LinkedButton button = new LinkedButton(newentries[i].Link);
@@ -45,6 +50,8 @@ namespace SBWikiManager.SubForms
                 Controls.Add(button);
                 entries.Insert(0, newentries[i]);
                 buttons.Insert(0, button);
+                string notificationtext = button.button.Text.Substring(0, 50);
+                if(Settings.Social.AllowNotifications) Notifications.ShowBalloonTip(5000, "Social", notificationtext, ToolTipIcon.Info);
             }
             if (buttons.Count > 100)
             {

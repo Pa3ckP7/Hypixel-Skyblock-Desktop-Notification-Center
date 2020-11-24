@@ -78,6 +78,12 @@
     <Compile Include="SubForms\SBWikiSocialForm.Designer.cs">
       <DependentUpon>SBWikiSocialForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SubForms\SettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForms\SettingsForm.Designer.cs">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -102,6 +108,9 @@
     <EmbeddedResource Include="SubForms\SBWikiSocialForm.resx">
       <DependentUpon>SBWikiSocialForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SubForms\SettingsForm.resx">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -123,6 +132,10 @@
     <ProjectReference Include="..\SBWikiContent\SBWikiContent.csproj">
       <Project>{9c9279e2-81f2-415d-8aa9-dce63333dd15}</Project>
       <Name>SBWikiContent</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SBWikiSettings\SBWikiSettings.csproj">
+      <Project>{5ccf5f1c-9963-4dd1-96c3-d1967cb1d7fd}</Project>
+      <Name>SBWikiSettings</Name>
     </ProjectReference>
     <ProjectReference Include="..\SBWikiSocial\SBWikiSocial.csproj">
       <Project>{cf737ca3-8f04-4649-ba74-ba2a8d38be50}</Project>

@@ -9,21 +9,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SBWikiSettings;
 
 namespace SBWikiManager
 {
     public partial class Form1 : Form
     {
-        List<Entry> CurrentEntries;
-        SubForms.SBWikiContentForm content = new SubForms.SBWikiContentForm();
-        SubForms.SBWikiForumForm forum = new SubForms.SBWikiForumForm();
-        SubForms.SBWikiSocialForm social = new SubForms.SBWikiSocialForm();
+        SubForms.SBWikiContentForm content;
+        SubForms.SBWikiForumForm forum;
+        SubForms.SBWikiSocialForm social;
+        SubForms.SettingsForm settingsF;
         Form activeform;
+        SettingsManager sm = new SettingsManager();
         public Form1()
         {
             InitializeComponent();
             ForumManager cm = new ForumManager();
             cm.GetData();
+            Notifications.Icon = SystemIcons.Information;
+            settingsF = new SubForms.SettingsForm(sm);
+            content = new SubForms.SBWikiContentForm(sm.Settings,Notifications);
+            forum = new SubForms.SBWikiForumForm(sm.Settings,Notifications);
+            social = new SubForms.SBWikiSocialForm(sm.Settings,Notifications);
             activeform = content;
             SwitchSubform(content);
         }
@@ -55,6 +62,10 @@ namespace SBWikiManager
         private void SocialButton_Click(object sender, EventArgs e)
         {
             SwitchSubform(social);
+        }        
+        private void SettingsButton_Click(object sender, EventArgs e)
+        {
+            SwitchSubform(settingsF);
         }
         #endregion
     }

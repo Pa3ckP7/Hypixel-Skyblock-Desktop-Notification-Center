@@ -1,4 +1,5 @@
 ﻿using SBWikiContent;
+using SBWikiSettings;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,9 +16,13 @@ namespace SBWikiManager.SubForms
     {
         List<LinkedButton> buttons = new List<LinkedButton>();
         ContentManager cm = new ContentManager();
-        public SBWikiContentForm()
+        Settings Settings;
+        NotifyIcon Notifications;
+        public SBWikiContentForm(Settings settings,NotifyIcon notifications)
         {
             InitializeComponent();
+            Notifications = notifications;
+            Settings = settings;
             List<Entry> entries = cm.GetData();
             #region display            
             for (int i = entries.Count-1; i >= 0; i--) 
@@ -46,28 +51,45 @@ namespace SBWikiManager.SubForms
         }
         private void RefeshTimer_Tick(object sender, EventArgs e)
         {
-            List<Entry> entries = cm.GetData();
+            List<Entry> entries = cm.RefreshData();
             for (int i = entries.Count-1; i >= 0; i--) 
             {
                 LinkedButton button = new LinkedButton(entries[i].link);
                 button.Dock = DockStyle.Top;
                 button.Name = "button";
+                string notificationtitle="";
+                string notificationtext="";
                 switch (entries[i].type)
                 {
                     case "edit":
-                        if (!entries[i].HasMinorFlag) button.button.Text = $"{entries[i].user} edited {entries[i].title} description {entries[i].commentshort}";
-                        else button.button.Text = $"[minor]{entries[i].user} edited {entries[i].title} description {entries[i].commentshort}";
+                        if (!entries[i].HasMinorFlag)
+                        {
+                            button.button.Text = $"{entries[i].user} edited {entries[i].title} description {entries[i].commentshort}";
+                            notificationtitle = "Content|Edit";
+                            notificationtext = $"{entries[i].user} done an edit on {entries[i].title}";
+                        }
+                        else
+                        {
+                            button.button.Text = $"[minor]{entries[i].user} edited {entries[i].title} description {entries[i].commentshort}";
+                            notificationtitle = "Content|Minor Edit";
+                            notificationtext = $"{entries[i].user} done a monir edit on {entries[i].title}";
+                        }
                         break;
                     case "log":
                         button.button.Text = $"[LOG|{entries[i].logtype}] {entries[i].user} logged action {entries[i].logaction} {entries[i].title} description: {entries[i].commentshort}";
+                        notificationtext = $"[LOG|{entries[i].logtype}] {entries[i].user} logged action {entries[i].logaction}";
+                        notificationtitle = "Content|Log";
                         break;
                     case "new":
                         button.button.Text = $"{entries[i].user} created {entries[i].title} description {entries[i].commentshort}";
+                        notificationtext = $"{entries[i].user} created {entries[i].title}";
+                        notificationtitle = "Content|New Article";
                         break;
                 } // set text
                 button.button.TextAlign = ContentAlignment.MiddleLeft;
                 Controls.Add(button);
                 buttons.Add(button);
+                if(Settings.Content.AllowNotifications) Notifications.ShowBalloonTip(5000,notificationtitle,notificationtext,ToolTipIcon.Info);
             }
             if (buttons.Count > 100)
             {

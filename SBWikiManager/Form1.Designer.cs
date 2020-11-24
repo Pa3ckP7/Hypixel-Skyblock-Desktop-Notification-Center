@@ -28,12 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.SettingsButton = new System.Windows.Forms.Button();
             this.ForumButton = new System.Windows.Forms.Button();
             this.SocialButton = new System.Windows.Forms.Button();
             this.ContentButton = new System.Windows.Forms.Button();
             this.SubWindow = new System.Windows.Forms.Panel();
+            this.Notifications = new System.Windows.Forms.NotifyIcon(this.components);
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,6 +62,7 @@
             this.SettingsButton.TabIndex = 4;
             this.SettingsButton.Text = "Settings";
             this.SettingsButton.UseVisualStyleBackColor = true;
+            this.SettingsButton.Click += new System.EventHandler(this.SettingsButton_Click);
             // 
             // ForumButton
             // 
@@ -108,6 +111,11 @@
             this.SubWindow.Size = new System.Drawing.Size(786, 403);
             this.SubWindow.TabIndex = 1;
             // 
+            // Notifications
+            // 
+            this.Notifications.Text = "SBWiki Dekstop Notifications";
+            this.Notifications.Visible = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -132,6 +140,7 @@
         private System.Windows.Forms.Panel SubWindow;
         private System.Windows.Forms.Button SettingsButton;
         private System.Windows.Forms.Button ForumButton;
+        private System.Windows.Forms.NotifyIcon Notifications;
     }
 }
 

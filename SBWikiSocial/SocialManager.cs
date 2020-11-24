@@ -32,7 +32,6 @@ namespace SBWikiSocial
                 socialentry.Link=$"https://hypixel-skyblock.fandom.com/{link}";
                 entrylist.Add(socialentry);
             }
-            string stop = "debug";
             entrylist.RemoveAll(x => entrylist.IndexOf(x) >= 100);
             return entrylist;
         }
