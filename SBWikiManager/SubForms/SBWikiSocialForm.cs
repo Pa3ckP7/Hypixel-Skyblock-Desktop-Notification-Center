@@ -14,7 +14,7 @@ namespace SBWikiManager.SubForms
     public partial class SBWikiSocialForm : Form
     {
         List<LinkedButton> buttons = new List<LinkedButton>();
-        List<string> entries = new List<string>();
+        List<Social> entries = new List<Social>();
         SocialManager sm = new SocialManager();
         public SBWikiSocialForm()
         {
@@ -22,11 +22,10 @@ namespace SBWikiManager.SubForms
             entries=sm.GetData();            
             for (int i = entries.Count - 1; i >= 0; i--) 
             {
-                LinkedButton button = new LinkedButton();
+                LinkedButton button = new LinkedButton(entries[i].Link);
                 button.Dock = DockStyle.Top;
                 button.Name = "button";
-                //insert link
-                button.button.Text = entries[i];
+                button.button.Text = entries[i].Text;
                 button.button.TextAlign = ContentAlignment.MiddleLeft;
                 Controls.Add(button);
                 buttons.Insert(0, button);
@@ -34,14 +33,14 @@ namespace SBWikiManager.SubForms
         }
         private void RefreshTimer_Tick(object sender, EventArgs e)
         {
-            List<string> newset = sm.GetData();
-            List<string> newentries = newset.Except(entries).ToList();
+            List<Social> newset = sm.GetData();
+            List<Social> newentries = newset.Except(entries).ToList();
             for (int i = newentries.Count - 1; i >= 0; i--)
             {
-                LinkedButton button = new LinkedButton();
+                LinkedButton button = new LinkedButton(newentries[i].Link);
                 button.Dock = DockStyle.Top;
-                button.Name = "label";
-                button.button.Text = newentries[i];
+                button.Name = "button";
+                button.button.Text = newentries[i].Text;
                 button.button.TextAlign = ContentAlignment.MiddleLeft;
                 Controls.Add(button);
                 entries.Insert(0, newentries[i]);

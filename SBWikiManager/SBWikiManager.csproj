@@ -124,7 +124,7 @@
       <Project>{9c9279e2-81f2-415d-8aa9-dce63333dd15}</Project>
       <Name>SBWikiContent</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SBWikiDiscussions\SBWikiSocial.csproj">
+    <ProjectReference Include="..\SBWikiSocial\SBWikiSocial.csproj">
       <Project>{cf737ca3-8f04-4649-ba74-ba2a8d38be50}</Project>
       <Name>SBWikiSocial</Name>
     </ProjectReference>

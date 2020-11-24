@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SBWikiManager", "SBWikiMana
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SBWikiContent", "SBWikiContent\SBWikiContent.csproj", "{9C9279E2-81F2-415D-8AA9-DCE63333DD15}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SBWikiSocial", "SBWikiDiscussions\SBWikiSocial.csproj", "{CF737CA3-8F04-4649-BA74-BA2A8D38BE50}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SBWikiSocial", "SBWikiSocial\SBWikiSocial.csproj", "{CF737CA3-8F04-4649-BA74-BA2A8D38BE50}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SBWikiForum", "SBWikiForum\SBWikiForum.csproj", "{448CCB5D-3D65-46FC-AEC8-F7EF7ED8C210}"
 EndProject
