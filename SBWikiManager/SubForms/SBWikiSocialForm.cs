@@ -55,6 +55,7 @@ namespace SBWikiManager.SubForms
                 buttons.RemoveAll(x => buttons.IndexOf(x) >= 100);
                 entries.RemoveAll(x => entries.IndexOf(x) >= 100);
             }
+            VerticalScroll.Value = 0;
         }
     }
 }

@@ -79,6 +79,7 @@ namespace SBWikiManager.SubForms
                 buttons.RemoveAll(x => buttons.IndexOf(x) >= 100);
                 buttons.Reverse();
             }
+            VerticalScroll.Value = 0;
         }
     }
 }
