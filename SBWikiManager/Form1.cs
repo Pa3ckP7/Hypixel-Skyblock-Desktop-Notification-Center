@@ -68,5 +68,35 @@ namespace SBWikiManager
             SwitchSubform(settingsF);
         }
         #endregion
+
+        private void Notifications_BalloonTipClicked(object sender, EventArgs e)
+        {
+            var notifier = sender as NotifyIcon;
+            WindowState = FormWindowState.Minimized;
+            Show();
+            WindowState = FormWindowState.Normal;            
+        }
+        private void showToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
+            Show();
+            WindowState = FormWindowState.Normal;
+        }
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Environment.Exit(0);
+        }
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+            Hide();
+            Notifications.ShowBalloonTip(1000,"Hypixel-Skyblock Dekstop Notification Center","The app has been minimized to System Tray",ToolTipIcon.None);
+        }
+        private void Notifications_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
+            Show();
+            WindowState = FormWindowState.Normal;
+        }
     }
 }

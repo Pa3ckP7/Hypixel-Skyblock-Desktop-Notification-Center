@@ -23,6 +23,7 @@ namespace SBWikiManager.SubForms
             ContentSwitch.Checked = Settings.Content.AllowNotifications;
             SocialSwitch.Checked = Settings.Social.AllowNotifications;
             ForumSwitch.Checked = Settings.Forum.AllowNotifications;
+            UsernameTBox.Text = Settings.Name;
         }
 
         private void ContentSwitch_CheckedChanged(object sender, EventArgs e)
@@ -43,6 +44,11 @@ namespace SBWikiManager.SubForms
         private void SaveButton_Click(object sender, EventArgs e)
         {
             SM.SaveSettings();
+        }
+
+        private void UsernameTBox_TextChanged(object sender, EventArgs e)
+        {
+            Settings.Name = UsernameTBox.Text;
         }
     }
 }
