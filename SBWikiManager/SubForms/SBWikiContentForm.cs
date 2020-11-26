@@ -44,6 +44,7 @@ namespace SBWikiManager.SubForms
                         break;
                 } // set text
                 button.button.TextAlign = ContentAlignment.MiddleLeft;
+                Tooltips.SetToolTip(button.button, button.link);
                 Controls.Add(button);
                 buttons.Add(button);
             }
@@ -81,6 +82,7 @@ namespace SBWikiManager.SubForms
                         break;
                 } // set text
                 button.button.TextAlign = ContentAlignment.MiddleLeft;
+                Tooltips.SetToolTip(button.button, button.link);
                 Controls.Add(button);
                 buttons.Add(button);
                 

@@ -32,6 +32,7 @@ namespace SBWikiManager.SubForms
                 button.Name = "button";
                 button.button.Text = entries[i].Text;
                 button.button.TextAlign = ContentAlignment.MiddleLeft;
+                Tooltips.SetToolTip(button.button, button.link);
                 Controls.Add(button);
                 buttons.Insert(0, button);
             }
@@ -47,6 +48,7 @@ namespace SBWikiManager.SubForms
                 button.Name = "button";
                 button.button.Text = newentries[i].Text;
                 button.button.TextAlign = ContentAlignment.MiddleLeft;
+                Tooltips.SetToolTip(button.button, button.link);
                 Controls.Add(button);
                 entries.Insert(0, newentries[i]);
                 buttons.Insert(0, button);

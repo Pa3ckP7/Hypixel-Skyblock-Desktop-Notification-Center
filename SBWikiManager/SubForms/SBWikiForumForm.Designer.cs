@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.UpdateTimer = new System.Windows.Forms.Timer(this.components);
+            this.Tooltips = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
             // panel1
@@ -69,5 +70,6 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Timer UpdateTimer;
+        private System.Windows.Forms.ToolTip Tooltips;
     }
 }

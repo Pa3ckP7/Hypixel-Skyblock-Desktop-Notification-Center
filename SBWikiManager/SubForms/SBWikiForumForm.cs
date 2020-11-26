@@ -33,6 +33,7 @@ namespace SBWikiManager.SubForms
                 if (!posts[i].IsReply) button.button.Text = $"{posts[i].PosterName} posted {posts[i].PostTitle}: {posts[i].Content}";
                 else button.button.Text = $"{posts[i].PosterName} replied with {posts[i].Content} on {posts[i].PostTitle}";
                 button.button.TextAlign = ContentAlignment.MiddleLeft;
+                Tooltips.SetToolTip(button.button, button.link);
                 Controls.Add(button);
                 buttons.Insert(0, button);
             }
@@ -57,6 +58,7 @@ namespace SBWikiManager.SubForms
                     Notify("Forum", $"{posts[i].PosterName} replied on {posts[i].PostTitle}", posts[i].PosterName);
                 }
                 button.button.TextAlign = ContentAlignment.MiddleLeft;
+                Tooltips.SetToolTip(button.button, button.link);
                 Controls.Add(button);
                 buttons.Insert(0, button);                
             }

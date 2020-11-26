@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.ContentSwitch = new System.Windows.Forms.CheckBox();
             this.SocialSwitch = new System.Windows.Forms.CheckBox();
             this.ForumSwitch = new System.Windows.Forms.CheckBox();
@@ -43,6 +44,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.Tooltips = new System.Windows.Forms.ToolTip(this.components);
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -257,5 +259,6 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.ToolTip Tooltips;
     }
 }

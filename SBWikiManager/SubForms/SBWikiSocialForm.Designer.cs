@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.RefreshTimer = new System.Windows.Forms.Timer(this.components);
+            this.Tooltips = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
             // RefreshTimer
@@ -55,5 +56,6 @@
         #endregion
 
         private System.Windows.Forms.Timer RefreshTimer;
+        private System.Windows.Forms.ToolTip Tooltips;
     }
 }
