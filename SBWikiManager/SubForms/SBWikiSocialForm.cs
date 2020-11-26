@@ -51,7 +51,7 @@ namespace SBWikiManager.SubForms
                 entries.Insert(0, newentries[i]);
                 buttons.Insert(0, button);
                 string notificationtext = button.button.Text.Substring(0, 50);
-                if(Settings.Social.AllowNotifications) Notifications.ShowBalloonTip(5000, "Social", notificationtext, ToolTipIcon.Info);
+                Notify("Social", button.button.Text.Substring(0, 50), newentries[i].User);
             }
             if (buttons.Count > 100)
             {
@@ -63,6 +63,16 @@ namespace SBWikiManager.SubForms
                 entries.RemoveAll(x => entries.IndexOf(x) >= 100);
             }
             VerticalScroll.Value = 0;
+        }
+        public void Notify(string title, string text, string user)
+        {
+            if (Settings.Content.AllowNotifications)
+            {
+                if (!Settings.Names.Contains(user))
+                {
+                    Notifications.ShowBalloonTip(5000, title, text, ToolTipIcon.Info);
+                }
+            }
         }
     }
 }

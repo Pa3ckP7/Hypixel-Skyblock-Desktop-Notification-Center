@@ -10,5 +10,7 @@ namespace SBWikiSocial
     {
         public string Text { get; set; }
         public string Link { get; set; }
+        public string User { get; set; }
+        public string Action { get; set; }
     }
 }

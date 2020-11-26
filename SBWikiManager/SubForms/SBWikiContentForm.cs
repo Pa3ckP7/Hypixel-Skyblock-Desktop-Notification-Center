@@ -57,39 +57,33 @@ namespace SBWikiManager.SubForms
                 LinkedButton button = new LinkedButton(entries[i].link);
                 button.Dock = DockStyle.Top;
                 button.Name = "button";
-                string notificationtitle="";
-                string notificationtext="";
                 switch (entries[i].type)
                 {
                     case "edit":
                         if (!entries[i].HasMinorFlag)
                         {
                             button.button.Text = $"{entries[i].user} edited {entries[i].title} description {entries[i].commentshort}";
-                            notificationtitle = "Content|Edit";
-                            notificationtext = $"{entries[i].user} done an edit on {entries[i].title}";
+                            Notify("Content|Edit", $"{entries[i].user} done an edit on {entries[i].title}", entries[i].user);
                         }
                         else
                         {
                             button.button.Text = $"[minor]{entries[i].user} edited {entries[i].title} description {entries[i].commentshort}";
-                            notificationtitle = "Content|Minor Edit";
-                            notificationtext = $"{entries[i].user} done a monir edit on {entries[i].title}";
+                            Notify("Content|Minor Edit", $"{entries[i].user} done a minor edit on {entries[i].title}",entries[i].user);
                         }
                         break;
                     case "log":
                         button.button.Text = $"[LOG|{entries[i].logtype}] {entries[i].user} logged action {entries[i].logaction} {entries[i].title} description: {entries[i].commentshort}";
-                        notificationtext = $"[LOG|{entries[i].logtype}] {entries[i].user} logged action {entries[i].logaction}";
-                        notificationtitle = "Content|Log";
+                        Notify("Content|Log", $"[LOG|{entries[i].logtype}] {entries[i].user} logged action {entries[i].logaction}", entries[i].user);
                         break;
                     case "new":
                         button.button.Text = $"{entries[i].user} created {entries[i].title} description {entries[i].commentshort}";
-                        notificationtext = $"{entries[i].user} created {entries[i].title}";
-                        notificationtitle = "Content|New Article";
+                        Notify("Content|New Article", $"{entries[i].user} created {entries[i].title}", entries[i].user);
                         break;
                 } // set text
                 button.button.TextAlign = ContentAlignment.MiddleLeft;
                 Controls.Add(button);
                 buttons.Add(button);
-                if(Settings.Content.AllowNotifications) Notifications.ShowBalloonTip(5000,notificationtitle,notificationtext,ToolTipIcon.Info);
+                
             }
             if (buttons.Count > 100)
             {
@@ -102,6 +96,16 @@ namespace SBWikiManager.SubForms
                 buttons.Reverse();
             }
             VerticalScroll.Value = 0;
+        }
+        public void Notify(string title, string text, string user) 
+        {
+            if (Settings.Content.AllowNotifications)
+            {
+                if (!Settings.Names.Contains(user))
+                {
+                    Notifications.ShowBalloonTip(5000, title, text, ToolTipIcon.Info);
+                }
+            }
         }
     }
 }

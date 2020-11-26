@@ -28,6 +28,8 @@ namespace SBWikiSocial
                 }
                 socialentry.Text = Regex.Replace(socialentry.Text, @"\([^)]*\)", "");
                 socialentry.Text = Regex.Replace(socialentry.Text,@"[ ]{2,}"," ");
+                socialentry.User = textsegments[0].Groups["text"].Value;
+                socialentry.Action = textsegments[7].Groups["text"].Value;
                 string link = Regex.Match(entry.Groups["entry"].Value, "<a href=\"(?<link>[^ \"]*)\">v").Groups["link"].Value;
                 socialentry.Link=$"https://hypixel-skyblock.fandom.com/{link}";
                 entrylist.Add(socialentry);

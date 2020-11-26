@@ -71,7 +71,6 @@ namespace SBWikiManager
 
         private void Notifications_BalloonTipClicked(object sender, EventArgs e)
         {
-            var notifier = sender as NotifyIcon;
             WindowState = FormWindowState.Minimized;
             Show();
             WindowState = FormWindowState.Normal;            

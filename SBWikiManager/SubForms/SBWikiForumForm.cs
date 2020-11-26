@@ -43,24 +43,22 @@ namespace SBWikiManager.SubForms
             List<Post> posts=fm.RefreshData();
             for (int i = posts.Count - 1; i >= 0; i--)
             {
-                string notificationtext;
                 LinkedButton button = new LinkedButton(posts[i].Link);
                 button.Dock = DockStyle.Top;
                 button.Name = "button";
                 if (!posts[i].IsReply)
                 {
-                    button.button.Text = $"{posts[i].PosterName} posted {posts[i].PostTitle}: {posts[i].Content}";
-                    notificationtext = $"{posts[i].PosterName} created post {posts[i].PostTitle}";
+                    button.button.Text = $"{posts[i].PosterName} posted {posts[i].PostTitle}: {posts[i].Content}";                    
+                    Notify("Forum", $"{posts[i].PosterName} created post {posts[i].PostTitle}", posts[i].PosterName);
                 }
                 else
                 {
                     button.button.Text = $"{posts[i].PosterName} replied with {posts[i].Content} on {posts[i].PostTitle}";
-                    notificationtext = $"{posts[i].PosterName} replied on {posts[i].PostTitle}";
+                    Notify("Forum", $"{posts[i].PosterName} replied on {posts[i].PostTitle}", posts[i].PosterName);
                 }
                 button.button.TextAlign = ContentAlignment.MiddleLeft;
                 Controls.Add(button);
-                buttons.Insert(0, button);
-                if(Settings.Forum.AllowNotifications) Notifications.ShowBalloonTip(5000, "Forum", notificationtext, ToolTipIcon.Info);
+                buttons.Insert(0, button);                
             }
             if (buttons.Count > 50) 
             {
@@ -71,6 +69,16 @@ namespace SBWikiManager.SubForms
                 buttons.RemoveAll(x => buttons.IndexOf(x) >= 50);
             }
             VerticalScroll.Value = 0;
+        }
+        public void Notify(string title, string text, string user)
+        {
+            if (Settings.Content.AllowNotifications)
+            {
+                if (!Settings.Names.Contains(user))
+                {
+                    Notifications.ShowBalloonTip(5000, title, text, ToolTipIcon.Info);
+                }
+            }
         }
     }
 }

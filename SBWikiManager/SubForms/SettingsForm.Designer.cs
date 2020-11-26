@@ -140,7 +140,7 @@
             this.UsernameTBox.Name = "UsernameTBox";
             this.UsernameTBox.Size = new System.Drawing.Size(100, 26);
             this.UsernameTBox.TabIndex = 7;
-            this.UsernameTBox.TextChanged += new System.EventHandler(this.UsernameTBox_TextChanged);
+            this.UsernameTBox.Leave += new System.EventHandler(this.UsernameTBox_Leave);
             // 
             // label4
             // 

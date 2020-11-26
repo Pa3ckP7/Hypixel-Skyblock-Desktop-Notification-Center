@@ -23,7 +23,13 @@ namespace SBWikiManager.SubForms
             ContentSwitch.Checked = Settings.Content.AllowNotifications;
             SocialSwitch.Checked = Settings.Social.AllowNotifications;
             ForumSwitch.Checked = Settings.Forum.AllowNotifications;
-            UsernameTBox.Text = Settings.Name;
+            if (Settings.Names != null)
+            {
+                var str = "";
+                foreach (var name in Settings.Names) str += name + ", ";
+                str = str.Substring(0, str.Length - 2);
+                UsernameTBox.Text = str;
+            }
         }
 
         private void ContentSwitch_CheckedChanged(object sender, EventArgs e)
@@ -45,10 +51,11 @@ namespace SBWikiManager.SubForms
         {
             SM.SaveSettings();
         }
-
-        private void UsernameTBox_TextChanged(object sender, EventArgs e)
+        private void UsernameTBox_Leave(object sender, EventArgs e)
         {
-            Settings.Name = UsernameTBox.Text;
+            var names = UsernameTBox.Text.Split(',');
+            for (int i=0;i<names.Length;i++) names[i] = names[i].Trim();
+            Settings.Names = names;
         }
     }
 }

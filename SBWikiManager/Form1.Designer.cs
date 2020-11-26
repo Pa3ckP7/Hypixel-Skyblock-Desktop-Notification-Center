@@ -121,6 +121,7 @@
             this.Notifications.Text = "SBWiki Dekstop Notifications";
             this.Notifications.Visible = true;
             this.Notifications.BalloonTipClicked += new System.EventHandler(this.Notifications_BalloonTipClicked);
+            this.Notifications.DoubleClick += new System.EventHandler(this.showToolStripMenuItem_Click);
             this.Notifications.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.Notifications_MouseDoubleClick);
             // 
             // contextMenuStrip1
@@ -134,14 +135,14 @@
             // showToolStripMenuItem
             // 
             this.showToolStripMenuItem.Name = "showToolStripMenuItem";
-            this.showToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.showToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.showToolStripMenuItem.Text = "Show";
             this.showToolStripMenuItem.Click += new System.EventHandler(this.showToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
