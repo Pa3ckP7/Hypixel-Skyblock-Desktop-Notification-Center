@@ -13,15 +13,30 @@ namespace SBWikiForum
         String time;
         public List<Post> GetData() 
         {
-            WebClient wc = new WebClient();
-            var data = wc.DownloadString("https://services.fandom.com/discussion/2011605/posts?limit=50&page=0");
-            return ParseData(data);
+            try
+            {
+                WebClient wc = new WebClient();
+                var data = wc.DownloadString("https://services.fandom.com/discussion/2011605/posts?limit=50&page=0");
+                return ParseData(data);
+            }
+            catch (Exception) 
+            {
+                return new List<Post>();
+            }
         }
         public List<Post> RefreshData() 
         {
-            WebClient wc = new WebClient();
-            var data = wc.DownloadString($"https://services.fandom.com/discussion/2011605/posts?limit=50&page=0&since={time}");
-            return ParseData(data);
+            try
+            {
+                WebClient wc = new WebClient();
+                var data = wc.DownloadString($"https://services.fandom.com/discussion/2011605/posts?limit=50&page=0&since={time}");
+                return ParseData(data);
+            }
+            catch (Exception) 
+            {
+                return new List<Post>();
+            }
+            
         }
         List<Post> ParseData(String data)
         {

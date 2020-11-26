@@ -49,7 +49,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.UsernameTBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
@@ -270,7 +269,6 @@
             // panel5
             // 
             this.panel5.Controls.Add(this.label1);
-            this.panel5.Controls.Add(this.label2);
             this.panel5.Controls.Add(this.UsernameTBox);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel5.Location = new System.Drawing.Point(0, 20);
@@ -287,22 +285,13 @@
             this.label1.TabIndex = 8;
             this.label1.Text = "Username";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label2.Location = new System.Drawing.Point(216, 11);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(130, 26);
-            this.label2.TabIndex = 9;
-            this.label2.Text = "Prevents you from getting \r\nnotified of your changes";
-            // 
             // UsernameTBox
             // 
             this.UsernameTBox.Location = new System.Drawing.Point(99, 11);
             this.UsernameTBox.Name = "UsernameTBox";
             this.UsernameTBox.Size = new System.Drawing.Size(100, 26);
             this.UsernameTBox.TabIndex = 7;
+            this.UsernameTBox.Leave += new System.EventHandler(this.UsernameTBox_Leave);
             // 
             // label3
             // 
@@ -380,7 +369,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox UsernameTBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel SocialNotificationsPanel;

@@ -73,7 +73,8 @@ namespace SBWikiManager
         {
             WindowState = FormWindowState.Minimized;
             Show();
-            WindowState = FormWindowState.Normal;            
+            WindowState = FormWindowState.Normal;
+            Activate();
         }
         private void showToolStripMenuItem_Click(object sender, EventArgs e)
         {

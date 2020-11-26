@@ -74,7 +74,7 @@ namespace SBWikiManager.SubForms
         }
         public void Notify(string title, string text, string user)
         {
-            if (Settings.Content.AllowNotifications)
+            if (Settings.Forum.AllowNotifications)
             {
                 if (!Settings.Names.Contains(user))
                 {
