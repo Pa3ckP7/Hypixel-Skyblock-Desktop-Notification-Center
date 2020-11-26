@@ -9,5 +9,7 @@ namespace SBWikiSettings
     public class Content
     {
         public bool AllowNotifications { get; set; }
+        public bool ArticleNotifications { get; set; }
+        public bool LogNotifications { get; set; }
     }
 }

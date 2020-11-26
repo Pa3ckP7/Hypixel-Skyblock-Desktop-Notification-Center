@@ -53,7 +53,7 @@ namespace SBWikiManager.SubForms
                 entries.Insert(0, newentries[i]);
                 buttons.Insert(0, button);
                 string notificationtext = button.button.Text.Substring(0, 50);
-                Notify("Social", button.button.Text.Substring(0, 50), newentries[i].User);
+                Notify("Social", button.button.Text.Substring(0, 50), newentries[i].User,newentries[i].Action);
             }
             if (buttons.Count > 100)
             {
@@ -66,12 +66,14 @@ namespace SBWikiManager.SubForms
             }
             VerticalScroll.Value = 0;
         }
-        public void Notify(string title, string text, string user)
+        public void Notify(string title, string text, string user, string action)
         {
             if (Settings.Content.AllowNotifications)
             {
                 if (!Settings.Names.Contains(user))
                 {
+                    if (!Settings.Social.CommentNotifications && action.Contains("comment")) return;
+                    if (!Settings.Social.MessageNotifications && action.Contains("message")) return;
                     Notifications.ShowBalloonTip(5000, title, text, ToolTipIcon.Info);
                 }
             }

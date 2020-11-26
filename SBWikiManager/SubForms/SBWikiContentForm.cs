@@ -64,21 +64,21 @@ namespace SBWikiManager.SubForms
                         if (!entries[i].HasMinorFlag)
                         {
                             button.button.Text = $"{entries[i].user} edited {entries[i].title} description {entries[i].commentshort}";
-                            Notify("Content|Edit", $"{entries[i].user} done an edit on {entries[i].title}", entries[i].user);
+                            if(Settings.Content.ArticleNotifications)Notify("Content|Edit", $"{entries[i].user} done an edit on {entries[i].title}", entries[i].user);
                         }
                         else
                         {
                             button.button.Text = $"[minor]{entries[i].user} edited {entries[i].title} description {entries[i].commentshort}";
-                            Notify("Content|Minor Edit", $"{entries[i].user} done a minor edit on {entries[i].title}",entries[i].user);
+                            if (Settings.Content.ArticleNotifications)Notify("Content|Minor Edit", $"{entries[i].user} done a minor edit on {entries[i].title}",entries[i].user);
                         }
                         break;
                     case "log":
                         button.button.Text = $"[LOG|{entries[i].logtype}] {entries[i].user} logged action {entries[i].logaction} {entries[i].title} description: {entries[i].commentshort}";
-                        Notify("Content|Log", $"[LOG|{entries[i].logtype}] {entries[i].user} logged action {entries[i].logaction}", entries[i].user);
+                        if(Settings.Content.LogNotifications)Notify("Content|Log", $"[LOG|{entries[i].logtype}] {entries[i].user} logged action {entries[i].logaction}", entries[i].user);
                         break;
                     case "new":
                         button.button.Text = $"{entries[i].user} created {entries[i].title} description {entries[i].commentshort}";
-                        Notify("Content|New Article", $"{entries[i].user} created {entries[i].title}", entries[i].user);
+                        if (Settings.Content.ArticleNotifications)Notify("Content|New Article", $"{entries[i].user} created {entries[i].title}", entries[i].user);
                         break;
                 } // set text
                 button.button.TextAlign = ContentAlignment.MiddleLeft;
