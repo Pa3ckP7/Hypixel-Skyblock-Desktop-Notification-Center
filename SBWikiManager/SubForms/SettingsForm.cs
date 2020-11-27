@@ -37,6 +37,14 @@ namespace SBWikiManager.SubForms
             ContentSwitch.Checked = Settings.Content.AllowNotifications;
             SocialSwitch.Checked = Settings.Social.AllowNotifications;
             ForumSwitch.Checked = Settings.Forum.AllowNotifications;
+            SaveButton.BackColor = Color.FromArgb(193, 89, 38);
+            DefaultsButton.BackColor = Color.FromArgb(193, 89, 38);
+            SaveButton.FlatStyle = FlatStyle.Flat;
+            DefaultsButton.FlatStyle = FlatStyle.Flat;
+            foreach (Control control in Controls) 
+            {
+                control.ForeColor = Color.LightGray;
+            } 
             if (Settings.Names.Length!=0)
             {
                 var str = "";

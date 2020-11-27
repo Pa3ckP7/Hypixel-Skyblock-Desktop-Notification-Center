@@ -31,7 +31,14 @@ namespace SBWikiManager.SubForms
                 button.Dock = DockStyle.Top;
                 button.Name = "button";
                 button.button.Text = entries[i].Text;
-                button.button.TextAlign = ContentAlignment.MiddleLeft;
+                button.button.TextAlign = ContentAlignment.TopLeft;                
+                button.button.BackColor = Color.Transparent;
+                button.button.FlatStyle = FlatStyle.Flat;
+                button.BackColor = Color.Transparent;
+                button.button.FlatAppearance.MouseOverBackColor = Color.Transparent;
+                button.button.FlatAppearance.BorderSize = 0;
+                button.button.ForeColor = Color.LightGray;
+                button.Height = 30;
                 Tooltips.SetToolTip(button.button, button.link);
                 Controls.Add(button);
                 buttons.Insert(0, button);
@@ -46,8 +53,16 @@ namespace SBWikiManager.SubForms
                 LinkedButton button = new LinkedButton(newentries[i].Link);
                 button.Dock = DockStyle.Top;
                 button.Name = "button";
+                button.button.BackColor = Color.Transparent;
+                button.button.FlatStyle = FlatStyle.Flat;
+                button.BackColor = Color.Transparent;
+                button.button.FlatAppearance.MouseOverBackColor = Color.Transparent;
+                button.button.FlatAppearance.BorderSize = 0;
+                button.button.ForeColor = Color.LightGray;
+                button.Height = 30;
                 button.button.Text = newentries[i].Text;
-                button.button.TextAlign = ContentAlignment.MiddleLeft;
+                button.button.TextAlign = ContentAlignment.TopLeft;
+                button.button.BackColor = Color.Transparent;
                 Tooltips.SetToolTip(button.button, button.link);
                 Controls.Add(button);
                 entries.Insert(0, newentries[i]);
@@ -74,7 +89,7 @@ namespace SBWikiManager.SubForms
                 {
                     if (!Settings.Social.CommentNotifications && action.Contains("comment")) return;
                     if (!Settings.Social.MessageNotifications && action.Contains("message")) return;
-                    Notifications.ShowBalloonTip(5000, title, text, ToolTipIcon.Info);
+                    Notifications.ShowBalloonTip(5000, title, text, ToolTipIcon.None);
                 }
             }
         }

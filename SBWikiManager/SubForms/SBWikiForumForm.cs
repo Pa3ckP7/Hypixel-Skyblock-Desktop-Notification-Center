@@ -30,9 +30,16 @@ namespace SBWikiManager.SubForms
                 LinkedButton button = new LinkedButton(posts[i].Link);
                 button.Dock = DockStyle.Top;
                 button.Name = "button";
+                button.button.BackColor = Color.Transparent;
+                button.button.FlatStyle = FlatStyle.Flat;
+                button.BackColor = Color.Transparent;
+                button.button.FlatAppearance.MouseOverBackColor = Color.Transparent;
+                button.button.FlatAppearance.BorderSize = 0;
+                button.button.ForeColor = Color.LightGray;
+                button.Height = 30;
                 if (!posts[i].IsReply) button.button.Text = $"{posts[i].PosterName} posted {posts[i].PostTitle}: {posts[i].Content}";
                 else button.button.Text = $"{posts[i].PosterName} replied with {posts[i].Content} on {posts[i].PostTitle}";
-                button.button.TextAlign = ContentAlignment.MiddleLeft;
+                button.button.TextAlign = ContentAlignment.TopLeft;
                 Tooltips.SetToolTip(button.button, button.link);
                 Controls.Add(button);
                 buttons.Insert(0, button);
@@ -46,7 +53,14 @@ namespace SBWikiManager.SubForms
             {
                 LinkedButton button = new LinkedButton(posts[i].Link);
                 button.Dock = DockStyle.Top;
-                button.Name = "button";
+                button.Name = "button";                
+                button.button.BackColor = Color.Transparent;
+                button.button.FlatStyle = FlatStyle.Flat;
+                button.BackColor = Color.Transparent;
+                button.button.FlatAppearance.MouseOverBackColor = Color.Transparent;
+                button.button.FlatAppearance.BorderSize = 0;
+                button.button.ForeColor = Color.LightGray;
+                button.Height = 30;
                 if (!posts[i].IsReply)
                 {
                     button.button.Text = $"{posts[i].PosterName} posted {posts[i].PostTitle}: {posts[i].Content}";                    
@@ -57,7 +71,7 @@ namespace SBWikiManager.SubForms
                     button.button.Text = $"{posts[i].PosterName} replied with {posts[i].Content} on {posts[i].PostTitle}";
                     Notify("Forum", $"{posts[i].PosterName} replied on {posts[i].PostTitle}", posts[i].PosterName);
                 }
-                button.button.TextAlign = ContentAlignment.MiddleLeft;
+                button.button.TextAlign = ContentAlignment.TopLeft;
                 Tooltips.SetToolTip(button.button, button.link);
                 Controls.Add(button);
                 buttons.Insert(0, button);                
@@ -78,7 +92,7 @@ namespace SBWikiManager.SubForms
             {
                 if (!Settings.Names.Contains(user))
                 {
-                    Notifications.ShowBalloonTip(5000, title, text, ToolTipIcon.Info);
+                    Notifications.ShowBalloonTip(5000, title, text, ToolTipIcon.None);
                 }
             }
         }

@@ -24,9 +24,22 @@ namespace SBWikiManager
         public Form1()
         {
             InitializeComponent();
+            SubWindow.BackColor = Color.FromArgb(54, 26, 29);
+            panel1.BackColor = Color.FromArgb(204, 153, 51);
+            ContentButton.BackColor = Color.FromArgb(193, 89, 38);
+            SocialButton.BackColor = Color.FromArgb(193, 89, 38);
+            ForumButton.BackColor = Color.FromArgb(193, 89, 38);
+            SettingsButton.BackColor = Color.FromArgb(193, 89, 38);
+            ContentButton.ForeColor = Color.LightGray;
+            SocialButton.ForeColor = Color.LightGray;
+            ForumButton.ForeColor = Color.LightGray;
+            SettingsButton.ForeColor = Color.LightGray;
+            SettingsButton.FlatAppearance.BorderColor = Color.LightGray;
+            ContentButton.FlatAppearance.BorderColor = Color.LightGray;
+            SocialButton.FlatAppearance.BorderColor = Color.LightGray;
+            ForumButton.FlatAppearance.BorderColor = Color.LightGray;
             ForumManager cm = new ForumManager();
             cm.GetData();
-            Notifications.Icon = SystemIcons.Information;
             settingsF = new SubForms.SettingsForm(sm);
             content = new SubForms.SBWikiContentForm(sm.Settings,Notifications);
             forum = new SubForms.SBWikiForumForm(sm.Settings,Notifications);
@@ -46,6 +59,7 @@ namespace SBWikiManager
             SubWindow.Controls.Add(form);
             form.FormBorderStyle = FormBorderStyle.None;
             form.Dock = DockStyle.Fill;
+            form.BackColor = Color.FromArgb(54, 26, 29);
             form.BringToFront();
             form.Show();
             activeform = form;

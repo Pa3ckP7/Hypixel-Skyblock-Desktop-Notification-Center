@@ -30,6 +30,13 @@ namespace SBWikiManager.SubForms
                 LinkedButton button = new LinkedButton(entries[i].link);
                 button.Dock = DockStyle.Top;
                 button.Name = "button";
+                button.button.BackColor = Color.Transparent;
+                button.button.FlatStyle = FlatStyle.Flat;
+                button.BackColor = Color.Transparent;
+                button.button.FlatAppearance.MouseOverBackColor = Color.Transparent;
+                button.button.FlatAppearance.BorderSize = 0;
+                button.button.ForeColor = Color.LightGray;
+                button.Height = 30;
                 switch (entries[i].type)
                 {
                     case "edit":
@@ -43,7 +50,7 @@ namespace SBWikiManager.SubForms
                         button.button.Text = $"{entries[i].user} created {entries[i].title} description {entries[i].commentshort}";
                         break;
                 } // set text
-                button.button.TextAlign = ContentAlignment.MiddleLeft;
+                button.button.TextAlign = ContentAlignment.TopLeft;
                 Tooltips.SetToolTip(button.button, button.link);
                 Controls.Add(button);
                 buttons.Add(button);
@@ -55,9 +62,16 @@ namespace SBWikiManager.SubForms
             List<Entry> entries = cm.RefreshData();
             for (int i = entries.Count-1; i >= 0; i--) 
             {
-                LinkedButton button = new LinkedButton(entries[i].link);
+                LinkedButton button = new LinkedButton(entries[i].link);               
                 button.Dock = DockStyle.Top;
                 button.Name = "button";
+                button.button.BackColor = Color.Transparent;
+                button.button.FlatStyle = FlatStyle.Flat;
+                button.BackColor = Color.Transparent;
+                button.button.FlatAppearance.MouseOverBackColor = Color.Transparent;
+                button.button.FlatAppearance.BorderSize = 0;
+                button.button.ForeColor = Color.LightGray;
+                button.Height = 30;
                 switch (entries[i].type)
                 {
                     case "edit":
@@ -81,7 +95,7 @@ namespace SBWikiManager.SubForms
                         if (Settings.Content.ArticleNotifications)Notify("Content|New Article", $"{entries[i].user} created {entries[i].title}", entries[i].user);
                         break;
                 } // set text
-                button.button.TextAlign = ContentAlignment.MiddleLeft;
+                button.button.TextAlign = ContentAlignment.TopLeft;
                 Tooltips.SetToolTip(button.button, button.link);
                 Controls.Add(button);
                 buttons.Add(button);
@@ -105,7 +119,7 @@ namespace SBWikiManager.SubForms
             {
                 if (!Settings.Names.Contains(user))
                 {
-                    Notifications.ShowBalloonTip(5000, title, text, ToolTipIcon.Info);
+                    Notifications.ShowBalloonTip(5000, title, text, ToolTipIcon.None);
                 }
             }
         }
