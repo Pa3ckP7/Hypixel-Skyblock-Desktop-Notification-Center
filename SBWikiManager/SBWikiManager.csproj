@@ -155,5 +155,8 @@
   <ItemGroup>
     <None Include="Resources\SBWIKI_icon.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SBWIIKI_header.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

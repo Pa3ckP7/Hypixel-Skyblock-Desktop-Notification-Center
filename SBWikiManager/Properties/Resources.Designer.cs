@@ -63,6 +63,16 @@ namespace SBWikiManager.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap SBWIIKI_header {
+            get {
+                object obj = ResourceManager.GetObject("SBWIIKI_header", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap SBWIKI_BG {
             get {
                 object obj = ResourceManager.GetObject("SBWIKI_BG", resourceCulture);
