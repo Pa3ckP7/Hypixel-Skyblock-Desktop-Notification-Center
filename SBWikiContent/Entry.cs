@@ -18,7 +18,7 @@ namespace SBWikiContent
             {
                 if (comment != null)
                 {
-                    if (comment.Length > 20) return $"{comment.Substring(0, 20)}...";
+                    if (comment.Length > 50) return $"{comment.Substring(0, 49)}...";
                     else return comment;
                 }
                 else return "";

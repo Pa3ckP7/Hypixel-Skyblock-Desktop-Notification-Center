@@ -14,7 +14,7 @@ namespace SBWikiForum
         public string RawContent { get; set; }
         public string Content { get 
             {
-                if (RawContent.Length > 20) return $"{RawContent.Substring(0, 20)}...";
+                if (RawContent.Length > 50) return $"{RawContent.Substring(0, 49)}...";
                 else return RawContent;
             }}
         public string Creator { get; set; } //name of the creator who originally created the post

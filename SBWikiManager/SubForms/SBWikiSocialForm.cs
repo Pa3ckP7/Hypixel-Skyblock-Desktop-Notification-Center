@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,7 +31,9 @@ namespace SBWikiManager.SubForms
                 LinkedButton button = new LinkedButton(entries[i].Link);
                 button.Dock = DockStyle.Top;
                 button.Name = "button";
-                button.button.Text = entries[i].Text;
+                button.button.Text = entries[i].Text.Trim();
+                button.name.Text = entries[i].User.Trim();
+                ColorName(entries[i].User.Trim(), button);
                 button.button.TextAlign = ContentAlignment.TopLeft;                
                 button.button.BackColor = Color.Transparent;
                 button.button.FlatStyle = FlatStyle.Flat;
@@ -38,6 +41,16 @@ namespace SBWikiManager.SubForms
                 button.button.FlatAppearance.MouseOverBackColor = Color.Transparent;
                 button.button.FlatAppearance.BorderSize = 0;
                 button.button.ForeColor = Color.LightGray;
+                button.tags.ForeColor = Color.LightGray;
+                button.tags.BackColor = Color.Transparent;
+                button.tags.FlatStyle = FlatStyle.Flat;
+                button.name.BackColor = Color.Transparent;
+                button.name.FlatStyle = FlatStyle.Flat;
+                button.tags.FlatAppearance.MouseOverBackColor = Color.Transparent;
+                button.tags.FlatAppearance.BorderSize = 0;
+                button.name.FlatAppearance.MouseOverBackColor = Color.Transparent;
+                button.name.FlatAppearance.BorderSize = 0;
+                Tooltips.SetToolTip(button.button, button.link);
                 button.Height = 30;
                 Tooltips.SetToolTip(button.button, button.link);
                 Controls.Add(button);
@@ -61,8 +74,20 @@ namespace SBWikiManager.SubForms
                 button.button.ForeColor = Color.LightGray;
                 button.Height = 30;
                 button.button.Text = newentries[i].Text;
+                button.name.Text = newentries[i].User;
+                ColorName(newentries[i].User, button);
                 button.button.TextAlign = ContentAlignment.TopLeft;
                 button.button.BackColor = Color.Transparent;
+                button.tags.ForeColor = Color.LightGray;
+                button.name.ForeColor = Color.LightGray;
+                button.tags.BackColor = Color.Transparent;
+                button.tags.FlatStyle = FlatStyle.Flat;
+                button.name.BackColor = Color.Transparent;
+                button.name.FlatStyle = FlatStyle.Flat;
+                button.tags.FlatAppearance.MouseOverBackColor = Color.Transparent;
+                button.tags.FlatAppearance.BorderSize = 0;
+                button.name.FlatAppearance.MouseOverBackColor = Color.Transparent;
+                button.name.FlatAppearance.BorderSize = 0;
                 Tooltips.SetToolTip(button.button, button.link);
                 Controls.Add(button);
                 entries.Insert(0, newentries[i]);
@@ -85,12 +110,40 @@ namespace SBWikiManager.SubForms
         {
             if (Settings.Social.AllowNotifications)
             {
-                if (!Settings.Names.Contains(user))
+                if (!Settings.Names.Contains(user)&& UserCheck.UserCheck.CheckUser(user)!="user")
                 {
                     if (!Settings.Social.CommentNotifications && action.Contains("comment")) return;
                     if (!Settings.Social.MessageNotifications && action.Contains("message")) return;
                     Notifications.ShowBalloonTip(5000, title, text, ToolTipIcon.None);
                 }
+            }
+        }
+        public void ColorName(string name, LinkedButton button)
+        {
+            string checkedUser = UserCheck.UserCheck.CheckUser(button.name.Text);
+            switch (checkedUser)
+            {
+                case "bureaucrat":
+                    button.name.ForeColor = Color.FromArgb(Int32.Parse("ff3f43", NumberStyles.HexNumber));
+                    break;
+                case "sysop":
+                    button.name.ForeColor = Color.FromArgb(Int32.Parse("a431fc", NumberStyles.HexNumber)); ;
+                    break;
+                case "codeeditor":
+                    button.name.ForeColor = Color.FromArgb(Int32.Parse("5874f3", NumberStyles.HexNumber)); ;
+                    break;
+                case "content-moderator":
+                    button.name.ForeColor = Color.FromArgb(Int32.Parse("7FFFD4", NumberStyles.HexNumber)); ;
+                    break;
+                case "threadmoderator":
+                    button.name.ForeColor = Color.FromArgb(Int32.Parse("1f9921", NumberStyles.HexNumber)); ;
+                    break;
+                case "rollback":
+                    button.name.ForeColor = Color.FromArgb(Int32.Parse("ff992b", NumberStyles.HexNumber)); ;
+                    break;
+                default:
+                    button.name.ForeColor = Color.LightGray;
+                    break;
             }
         }
     }

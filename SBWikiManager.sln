@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SBWikiForum", "SBWikiForum\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SBWikiSettings", "SBWikiSettings\SBWikiSettings.csproj", "{5CCF5F1C-9963-4DD1-96C3-D1967CB1D7FD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserCheck", "UserCheck\UserCheck.csproj", "{6F72BF41-259A-49DE-952A-E049E8234FC2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{5CCF5F1C-9963-4DD1-96C3-D1967CB1D7FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5CCF5F1C-9963-4DD1-96C3-D1967CB1D7FD}.Release|Any CPU.ActiveCfg = Debug|Any CPU
 		{5CCF5F1C-9963-4DD1-96C3-D1967CB1D7FD}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{6F72BF41-259A-49DE-952A-E049E8234FC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F72BF41-259A-49DE-952A-E049E8234FC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F72BF41-259A-49DE-952A-E049E8234FC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F72BF41-259A-49DE-952A-E049E8234FC2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

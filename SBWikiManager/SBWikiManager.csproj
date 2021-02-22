@@ -151,6 +151,10 @@
       <Project>{448ccb5d-3d65-46fc-aec8-f7ef7ed8c210}</Project>
       <Name>SBWikiForum</Name>
     </ProjectReference>
+    <ProjectReference Include="..\UserCheck\UserCheck.csproj">
+      <Project>{6f72bf41-259a-49de-952a-e049e8234fc2}</Project>
+      <Name>UserCheck</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\SBWIKI_icon.ico" />
