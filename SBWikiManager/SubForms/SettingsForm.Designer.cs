@@ -53,6 +53,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.DefaultsButton = new System.Windows.Forms.Button();
+            this.StaffNotifs = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -85,10 +86,10 @@
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.panel5);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(530, 338);
+            this.panel1.Size = new System.Drawing.Size(530, 454);
             this.panel1.TabIndex = 7;
             // 
             // panel4
@@ -96,7 +97,7 @@
             this.panel4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel4.Controls.Add(this.ForumSwitch);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel4.Location = new System.Drawing.Point(0, 289);
+            this.panel4.Location = new System.Drawing.Point(0, 309);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(530, 45);
             this.panel4.TabIndex = 25;
@@ -117,7 +118,7 @@
             this.label6.AutoSize = true;
             this.label6.Dock = System.Windows.Forms.DockStyle.Top;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label6.Location = new System.Drawing.Point(0, 269);
+            this.label6.Location = new System.Drawing.Point(0, 289);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(60, 20);
             this.label6.TabIndex = 24;
@@ -130,7 +131,7 @@
             this.panel3.Controls.Add(this.SocialNotificationsPanel);
             this.panel3.Controls.Add(this.SocialSwitch);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(0, 190);
+            this.panel3.Location = new System.Drawing.Point(0, 210);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(530, 79);
             this.panel3.TabIndex = 23;
@@ -189,7 +190,7 @@
             this.label5.AutoSize = true;
             this.label5.Dock = System.Windows.Forms.DockStyle.Top;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label5.Location = new System.Drawing.Point(0, 170);
+            this.label5.Location = new System.Drawing.Point(0, 190);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(58, 20);
             this.label5.TabIndex = 22;
@@ -202,7 +203,7 @@
             this.panel2.Controls.Add(this.ContentNotificationPanel);
             this.panel2.Controls.Add(this.ContentSwitch);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 92);
+            this.panel2.Location = new System.Drawing.Point(0, 112);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(530, 78);
             this.panel2.TabIndex = 21;
@@ -261,7 +262,7 @@
             this.label4.AutoSize = true;
             this.label4.Dock = System.Windows.Forms.DockStyle.Top;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label4.Location = new System.Drawing.Point(0, 72);
+            this.label4.Location = new System.Drawing.Point(0, 92);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(73, 20);
             this.label4.TabIndex = 20;
@@ -269,12 +270,13 @@
             // 
             // panel5
             // 
+            this.panel5.Controls.Add(this.StaffNotifs);
             this.panel5.Controls.Add(this.label1);
             this.panel5.Controls.Add(this.UsernameTBox);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel5.Location = new System.Drawing.Point(0, 20);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(530, 52);
+            this.panel5.Size = new System.Drawing.Size(530, 72);
             this.panel5.TabIndex = 19;
             // 
             // label1
@@ -309,8 +311,8 @@
             // 
             this.panel6.Controls.Add(this.DefaultsButton);
             this.panel6.Controls.Add(this.SaveButton);
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel6.Location = new System.Drawing.Point(0, 338);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel6.Location = new System.Drawing.Point(0, 398);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(530, 56);
             this.panel6.TabIndex = 8;
@@ -326,11 +328,23 @@
             this.DefaultsButton.UseVisualStyleBackColor = true;
             this.DefaultsButton.Click += new System.EventHandler(this.DefaultsButton_Click);
             // 
+            // StaffNotifs
+            // 
+            this.StaffNotifs.AutoSize = true;
+            this.StaffNotifs.Location = new System.Drawing.Point(12, 37);
+            this.StaffNotifs.Name = "StaffNotifs";
+            this.StaffNotifs.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.StaffNotifs.Size = new System.Drawing.Size(205, 24);
+            this.StaffNotifs.TabIndex = 9;
+            this.StaffNotifs.Text = "Allow Staff Notifications";
+            this.StaffNotifs.UseVisualStyleBackColor = true;
+            this.StaffNotifs.CheckedChanged += new System.EventHandler(this.StaffNotifs_CheckedChanged);
+            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(530, 396);
+            this.ClientSize = new System.Drawing.Size(530, 454);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
@@ -381,5 +395,6 @@
         private System.Windows.Forms.CheckBox ContentLogsSwitch;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Button DefaultsButton;
+        private System.Windows.Forms.CheckBox StaffNotifs;
     }
 }

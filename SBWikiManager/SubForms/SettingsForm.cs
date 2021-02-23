@@ -28,6 +28,7 @@ namespace SBWikiManager.SubForms
             Tooltips.SetToolTip(SocialMessagesSwitch, "Toggles notifications for message wall messages and their replies");
             Tooltips.SetToolTip(SocialCommentsSwitch, "Toggles notifications for article comments and their replies");
             Tooltips.SetToolTip(DefaultsButton, "Loads the default settings");
+            Tooltips.SetToolTip(StaffNotifs, "Toggles notifications for staff activity");
             Settings = settingsManager.Settings;
             SM = settingsManager;
             ContentLogsSwitch.Checked = Settings.Content.LogNotifications;
@@ -37,6 +38,9 @@ namespace SBWikiManager.SubForms
             ContentSwitch.Checked = Settings.Content.AllowNotifications;
             SocialSwitch.Checked = Settings.Social.AllowNotifications;
             ForumSwitch.Checked = Settings.Forum.AllowNotifications;
+            ContentNotificationPanel.Visible = ContentSwitch.Checked;
+            SocialNotificationsPanel.Visible = SocialSwitch.Checked;
+            StaffNotifs.Checked = Settings.StaffNotifs;
             SaveButton.BackColor = Color.FromArgb(193, 89, 38);
             DefaultsButton.BackColor = Color.FromArgb(193, 89, 38);
             SaveButton.FlatStyle = FlatStyle.Flat;
@@ -111,6 +115,11 @@ namespace SBWikiManager.SubForms
             SocialSwitch.Checked = SM.Default.Social.AllowNotifications;
             ForumSwitch.Checked = SM.Default.Forum.AllowNotifications;
             UsernameTBox.Text = "";
+        }
+
+        private void StaffNotifs_CheckedChanged(object sender, EventArgs e)
+        {
+            Settings.StaffNotifs = StaffNotifs.Checked;
         }
     }
 }

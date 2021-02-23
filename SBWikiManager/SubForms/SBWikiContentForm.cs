@@ -170,7 +170,8 @@ namespace SBWikiManager.SubForms
         {
             if (Settings.Content.AllowNotifications)
             {
-                if (!Settings.Names.Contains(user)&& UserCheck.UserCheck.CheckUser(user) != "user")
+                if ((!Settings.StaffNotifs) && UserCheck.UserCheck.CheckUser(user) != "user") return;
+                if (!Settings.Names.Contains(user))
                 {
                     Notifications.ShowBalloonTip(5000, title, text, ToolTipIcon.None);
                 }

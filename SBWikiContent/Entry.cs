@@ -39,7 +39,7 @@ namespace SBWikiContent
                 switch (type)
                 {
                     case "edit":
-                        return $"https://hypixel-skyblock.fandom.com/wiki/{title}?action=history";
+                        return $"https://hypixel-skyblock.fandom.com/wiki/{title}??type=revision&diff={revid}&oldid={old_revid}";
                     case "log":
                         return "https://hypixel-skyblock.fandom.com/wiki/Special:RecentChanges?hidebots=1&hidepageedits=1&hidenewpages=1";
                     case "new":
@@ -49,5 +49,7 @@ namespace SBWikiContent
                 }
             }
         }
+        public int revid { get; set; }
+        public int old_revid { get; set; }
     }
 }

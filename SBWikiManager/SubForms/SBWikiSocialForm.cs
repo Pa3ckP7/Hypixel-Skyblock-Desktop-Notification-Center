@@ -92,8 +92,7 @@ namespace SBWikiManager.SubForms
                 Controls.Add(button);
                 entries.Insert(0, newentries[i]);
                 buttons.Insert(0, button);
-                string notificationtext = button.button.Text.Substring(0, 50);
-                Notify("Social", button.button.Text.Substring(0, 50), newentries[i].User,newentries[i].Action);
+                Notify("Social", button.button.Text, newentries[i].User,newentries[i].Action);
             }
             if (buttons.Count > 100)
             {
@@ -110,7 +109,8 @@ namespace SBWikiManager.SubForms
         {
             if (Settings.Social.AllowNotifications)
             {
-                if (!Settings.Names.Contains(user)&& UserCheck.UserCheck.CheckUser(user)!="user")
+                if ((!Settings.StaffNotifs) && UserCheck.UserCheck.CheckUser(user) != "user") return;
+                if (!Settings.Names.Contains(user))
                 {
                     if (!Settings.Social.CommentNotifications && action.Contains("comment")) return;
                     if (!Settings.Social.MessageNotifications && action.Contains("message")) return;
