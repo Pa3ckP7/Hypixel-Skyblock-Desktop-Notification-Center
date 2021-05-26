@@ -1,5 +1,4 @@
-﻿using SBWikiContent;
-using SBWikiForum;
+﻿
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -38,8 +37,6 @@ namespace SBWikiManager
             ContentButton.FlatAppearance.BorderColor = Color.LightGray;
             SocialButton.FlatAppearance.BorderColor = Color.LightGray;
             ForumButton.FlatAppearance.BorderColor = Color.LightGray;
-            ForumManager cm = new ForumManager();
-            cm.GetData();
             settingsF = new SubForms.SettingsForm(sm);
             content = new SubForms.SBWikiContentForm(sm.Settings,Notifications);
             forum = new SubForms.SBWikiForumForm(sm.Settings,Notifications);

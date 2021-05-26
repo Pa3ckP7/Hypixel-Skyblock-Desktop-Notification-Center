@@ -5,15 +5,13 @@ VisualStudioVersion = 16.0.30621.155
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SBWikiManager", "SBWikiManager\SBWikiManager.csproj", "{989189AA-F1EE-4847-BDD5-9C14BD69CD91}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SBWikiContent", "SBWikiContent\SBWikiContent.csproj", "{9C9279E2-81F2-415D-8AA9-DCE63333DD15}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SBWikiSocial", "SBWikiSocial\SBWikiSocial.csproj", "{CF737CA3-8F04-4649-BA74-BA2A8D38BE50}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SBWikiForum", "SBWikiForum\SBWikiForum.csproj", "{448CCB5D-3D65-46FC-AEC8-F7EF7ED8C210}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SBWikiSettings", "SBWikiSettings\SBWikiSettings.csproj", "{5CCF5F1C-9963-4DD1-96C3-D1967CB1D7FD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserCheck", "UserCheck\UserCheck.csproj", "{6F72BF41-259A-49DE-952A-E049E8234FC2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APIs", "APIs\APIs.csproj", "{D7BE9AF6-8B6B-4393-B3D6-56794F16FBA9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,18 +23,10 @@ Global
 		{989189AA-F1EE-4847-BDD5-9C14BD69CD91}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{989189AA-F1EE-4847-BDD5-9C14BD69CD91}.Release|Any CPU.ActiveCfg = Debug|Any CPU
 		{989189AA-F1EE-4847-BDD5-9C14BD69CD91}.Release|Any CPU.Build.0 = Debug|Any CPU
-		{9C9279E2-81F2-415D-8AA9-DCE63333DD15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9C9279E2-81F2-415D-8AA9-DCE63333DD15}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9C9279E2-81F2-415D-8AA9-DCE63333DD15}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{9C9279E2-81F2-415D-8AA9-DCE63333DD15}.Release|Any CPU.Build.0 = Debug|Any CPU
 		{CF737CA3-8F04-4649-BA74-BA2A8D38BE50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CF737CA3-8F04-4649-BA74-BA2A8D38BE50}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF737CA3-8F04-4649-BA74-BA2A8D38BE50}.Release|Any CPU.ActiveCfg = Debug|Any CPU
 		{CF737CA3-8F04-4649-BA74-BA2A8D38BE50}.Release|Any CPU.Build.0 = Debug|Any CPU
-		{448CCB5D-3D65-46FC-AEC8-F7EF7ED8C210}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{448CCB5D-3D65-46FC-AEC8-F7EF7ED8C210}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{448CCB5D-3D65-46FC-AEC8-F7EF7ED8C210}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{448CCB5D-3D65-46FC-AEC8-F7EF7ED8C210}.Release|Any CPU.Build.0 = Debug|Any CPU
 		{5CCF5F1C-9963-4DD1-96C3-D1967CB1D7FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5CCF5F1C-9963-4DD1-96C3-D1967CB1D7FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5CCF5F1C-9963-4DD1-96C3-D1967CB1D7FD}.Release|Any CPU.ActiveCfg = Debug|Any CPU
@@ -45,6 +35,10 @@ Global
 		{6F72BF41-259A-49DE-952A-E049E8234FC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6F72BF41-259A-49DE-952A-E049E8234FC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6F72BF41-259A-49DE-952A-E049E8234FC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7BE9AF6-8B6B-4393-B3D6-56794F16FBA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7BE9AF6-8B6B-4393-B3D6-56794F16FBA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7BE9AF6-8B6B-4393-B3D6-56794F16FBA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7BE9AF6-8B6B-4393-B3D6-56794F16FBA9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,4 +1,4 @@
-﻿using SBWikiForum;
+﻿using APIs;
 using SBWikiSettings;
 using System;
 using System.Collections.Generic;
@@ -16,7 +16,7 @@ namespace SBWikiManager.SubForms
     public partial class SBWikiForumForm : Form
     {
         List<LinkedButton> buttons = new List<LinkedButton>();
-        ForumManager fm = new ForumManager();
+        ForumAPI api = new ForumAPI();
         Settings Settings;
         NotifyIcon Notifications;
         public SBWikiForumForm(Settings settings, NotifyIcon notifications)
@@ -24,7 +24,7 @@ namespace SBWikiManager.SubForms
             InitializeComponent();
             Notifications = notifications;
             Settings = settings;
-            List<Post> posts = fm.GetData();
+            List<APIs.Post> posts = api.GetData();
             #region display            
             for (int i = posts.Count - 1; i >= 0; i--)
             {
@@ -72,7 +72,7 @@ namespace SBWikiManager.SubForms
         }
         private void UpdateTimer_Tick(object sender, EventArgs e)
         {
-            List<Post> posts = fm.RefreshData();
+            List<APIs.Post> posts = api.RefreshData();
             for (int i = posts.Count - 1; i >= 0; i--)
             {
                 LinkedButton button = new LinkedButton(posts[i].Link);

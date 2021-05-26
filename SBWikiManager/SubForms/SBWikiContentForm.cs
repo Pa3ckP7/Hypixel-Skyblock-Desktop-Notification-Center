@@ -1,5 +1,4 @@
-﻿using SBWikiContent;
-using SBWikiSettings;
+﻿using SBWikiSettings;
 using UserCheck;
 using System;
 using System.Collections.Generic;
@@ -11,13 +10,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Globalization;
+using APIs;
 
 namespace SBWikiManager.SubForms
 {
     public partial class SBWikiContentForm : Form
     {
         List<LinkedButton> buttons = new List<LinkedButton>();
-        ContentManager cm = new ContentManager();
+        ContentAPI api = new ContentAPI();
         Settings Settings;
         NotifyIcon Notifications;
         public SBWikiContentForm(Settings settings,NotifyIcon notifications)
@@ -25,7 +25,7 @@ namespace SBWikiManager.SubForms
             InitializeComponent();
             Notifications = notifications;
             Settings = settings;
-            List<Entry> entries = cm.GetData();
+            List<APIs.Content> entries = api.GetData();
             #region display            
             for (int i = entries.Count-1; i >= 0; i--) 
             {
@@ -89,7 +89,7 @@ namespace SBWikiManager.SubForms
         }
         private void RefeshTimer_Tick(object sender, EventArgs e)
         {
-            List<Entry> entries = cm.RefreshData();
+            List<APIs.Content> entries = api.RefreshData();
             for (int i = entries.Count-1; i >= 0; i--) 
             {
                 LinkedButton button = new LinkedButton(entries[i].link);               

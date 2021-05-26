@@ -135,9 +135,9 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SBWikiContent\SBWikiContent.csproj">
-      <Project>{9c9279e2-81f2-415d-8aa9-dce63333dd15}</Project>
-      <Name>SBWikiContent</Name>
+    <ProjectReference Include="..\APIs\APIs.csproj">
+      <Project>{d7be9af6-8b6b-4393-b3d6-56794f16fba9}</Project>
+      <Name>APIs</Name>
     </ProjectReference>
     <ProjectReference Include="..\SBWikiSettings\SBWikiSettings.csproj">
       <Project>{5ccf5f1c-9963-4dd1-96c3-d1967cb1d7fd}</Project>
@@ -146,10 +146,6 @@
     <ProjectReference Include="..\SBWikiSocial\SBWikiSocial.csproj">
       <Project>{cf737ca3-8f04-4649-ba74-ba2a8d38be50}</Project>
       <Name>SBWikiSocial</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SBWikiForum\SBWikiForum.csproj">
-      <Project>{448ccb5d-3d65-46fc-aec8-f7ef7ed8c210}</Project>
-      <Name>SBWikiForum</Name>
     </ProjectReference>
     <ProjectReference Include="..\UserCheck\UserCheck.csproj">
       <Project>{6f72bf41-259a-49de-952a-e049e8234fc2}</Project>
