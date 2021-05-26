@@ -56,7 +56,7 @@ namespace APIs
                     Forum.ReplyId = jForums[i]["id"].ToString();
                 }
                 else Forum.IsReply = false;
-                Forum.RawContent = jForums[i]["rawContent"].ToString();
+                Forum.Content = jForums[i]["rawContent"].ToString();
                 Forum.PostTitle = thread[0]["firstPost"]["title"].ToString();
                 Forum.ThreadId = thread[0]["firstPost"]["threadId"].ToString();
                 Forum.Creator = thread[0]["firstPost"]["createdBy"]["name"].ToString();

@@ -1,4 +1,5 @@
-﻿using SBWikiSettings;
+﻿using APIs;
+using SBWikiSettings;
 using SBWikiSocial;
 using System;
 using System.Collections.Generic;
@@ -16,8 +17,8 @@ namespace SBWikiManager.SubForms
     public partial class SBWikiSocialForm : Form
     {
         List<LinkedButton> buttons = new List<LinkedButton>();
-        List<SBWikiSocial.Social> entries = new List<SBWikiSocial.Social>();
-        SocialManager sm = new SocialManager();
+        List<APIs.Post> entries = new List<APIs.Post>();
+        SocialAPI api = new SocialAPI();
         Settings Settings;
         NotifyIcon Notifications;
         public SBWikiSocialForm(Settings settings,NotifyIcon notifications)
@@ -25,59 +26,19 @@ namespace SBWikiManager.SubForms
             InitializeComponent();
             Notifications = notifications;
             Settings = settings;
-            entries =sm.GetData();            
-            for (int i = entries.Count - 1; i >= 0; i--) 
+            entries =api.GetData();            
+            #region display            
+            for (int i = entries.Count - 1; i >= 0; i--)
             {
                 LinkedButton button = new LinkedButton(entries[i].Link);
                 button.Dock = DockStyle.Top;
                 button.Name = "button";
-                button.button.Text = entries[i].Text.Trim();
-                button.name.Text = entries[i].User.Trim();
-                ColorName(entries[i].User.Trim(), button);
-                button.button.TextAlign = ContentAlignment.TopLeft;                
                 button.button.BackColor = Color.Transparent;
                 button.button.FlatStyle = FlatStyle.Flat;
                 button.BackColor = Color.Transparent;
                 button.button.FlatAppearance.MouseOverBackColor = Color.Transparent;
                 button.button.FlatAppearance.BorderSize = 0;
                 button.button.ForeColor = Color.LightGray;
-                button.tags.ForeColor = Color.LightGray;
-                button.tags.BackColor = Color.Transparent;
-                button.tags.FlatStyle = FlatStyle.Flat;
-                button.name.BackColor = Color.Transparent;
-                button.name.FlatStyle = FlatStyle.Flat;
-                button.tags.FlatAppearance.MouseOverBackColor = Color.Transparent;
-                button.tags.FlatAppearance.BorderSize = 0;
-                button.name.FlatAppearance.MouseOverBackColor = Color.Transparent;
-                button.name.FlatAppearance.BorderSize = 0;
-                Tooltips.SetToolTip(button.button, button.link);
-                button.Height = 30;
-                Tooltips.SetToolTip(button.button, button.link);
-                Controls.Add(button);
-                buttons.Insert(0, button);
-            }
-        }
-        private void RefreshTimer_Tick(object sender, EventArgs e)
-        {
-            List<SBWikiSocial.Social> newset = sm.GetData();
-            List<SBWikiSocial.Social> newentries = newset.Where(x => !entries.Any(y => x.Text == y.Text)).ToList();
-            for (int i = newentries.Count - 1; i >= 0; i--)
-            {
-                LinkedButton button = new LinkedButton(newentries[i].Link);
-                button.Dock = DockStyle.Top;
-                button.Name = "button";
-                button.button.BackColor = Color.Transparent;
-                button.button.FlatStyle = FlatStyle.Flat;
-                button.BackColor = Color.Transparent;
-                button.button.FlatAppearance.MouseOverBackColor = Color.Transparent;
-                button.button.FlatAppearance.BorderSize = 0;
-                button.button.ForeColor = Color.LightGray;
-                button.Height = 30;
-                button.button.Text = newentries[i].Text;
-                button.name.Text = newentries[i].User;
-                ColorName(newentries[i].User, button);
-                button.button.TextAlign = ContentAlignment.TopLeft;
-                button.button.BackColor = Color.Transparent;
                 button.tags.ForeColor = Color.LightGray;
                 button.name.ForeColor = Color.LightGray;
                 button.tags.BackColor = Color.Transparent;
@@ -89,19 +50,60 @@ namespace SBWikiManager.SubForms
                 button.name.FlatAppearance.MouseOverBackColor = Color.Transparent;
                 button.name.FlatAppearance.BorderSize = 0;
                 Tooltips.SetToolTip(button.button, button.link);
+                button.Height = 30;
+                button.name.Text = entries[i].PosterName;
+                ColorName(entries[i].PosterName, button);
+                button.tags.Hide();
+                button.button.Text = $"commented on {entries[i].PageName} : {entries[i].Content}";                
+                button.button.TextAlign = ContentAlignment.TopLeft;
+                Tooltips.SetToolTip(button.button, button.link);
                 Controls.Add(button);
-                entries.Insert(0, newentries[i]);
                 buttons.Insert(0, button);
-                Notify("Social", button.button.Text, newentries[i].User,newentries[i].Action);
             }
-            if (buttons.Count > 100)
+            #endregion
+        }
+        private void RefreshTimer_Tick(object sender, EventArgs e)
+        {
+            List<APIs.Post> posts = api.RefreshData();
+            for (int i = entries.Count - 1; i >= 0; i--)
             {
-                for (int i = 100; i < buttons.Count; i++)
+                LinkedButton button = new LinkedButton(entries[i].Link);
+                button.Dock = DockStyle.Top;
+                button.Name = "button";
+                button.button.BackColor = Color.Transparent;
+                button.button.FlatStyle = FlatStyle.Flat;
+                button.BackColor = Color.Transparent;
+                button.button.FlatAppearance.MouseOverBackColor = Color.Transparent;
+                button.button.FlatAppearance.BorderSize = 0;
+                button.button.ForeColor = Color.LightGray;
+                button.tags.ForeColor = Color.LightGray;
+                button.name.ForeColor = Color.LightGray;
+                button.tags.BackColor = Color.Transparent;
+                button.tags.FlatStyle = FlatStyle.Flat;
+                button.name.BackColor = Color.Transparent;
+                button.name.FlatStyle = FlatStyle.Flat;
+                button.tags.FlatAppearance.MouseOverBackColor = Color.Transparent;
+                button.tags.FlatAppearance.BorderSize = 0;
+                button.name.FlatAppearance.MouseOverBackColor = Color.Transparent;
+                button.name.FlatAppearance.BorderSize = 0;
+                Tooltips.SetToolTip(button.button, button.link);
+                button.Height = 30;
+                button.name.Text = entries[i].PosterName;
+                ColorName(entries[i].PosterName, button);
+                button.tags.Hide();
+                button.button.Text = $"commented on {entries[i].PageName} : {entries[i].Content}";
+                button.button.TextAlign = ContentAlignment.TopLeft;
+                Tooltips.SetToolTip(button.button, button.link);
+                Controls.Add(button);
+                buttons.Insert(0, button);
+            }
+            if (buttons.Count > 50)
+            {
+                for (int i = 50; i < buttons.Count; i++)
                 {
                     buttons[i].Dispose();
                 }
-                buttons.RemoveAll(x => buttons.IndexOf(x) >= 100);
-                entries.RemoveAll(x => entries.IndexOf(x) >= 100);
+                buttons.RemoveAll(x => buttons.IndexOf(x) >= 50);
             }
             VerticalScroll.Value = 0;
         }
